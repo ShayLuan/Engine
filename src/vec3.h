@@ -44,15 +44,30 @@ struct Vec3 {
     }
 
     // --- Vector math ---
-    float dot(const Vec3& other) const   { /* TODO */ }
-    Vec3  cross(const Vec3& other) const { /* TODO */ }
+    float dot(const Vec3& other) const   { 
+        return ((x * other.x) + (y * other.y) + (z * other.z));
+    }
 
-    float length() const                 { /* TODO */ }  // hint: std::sqrt
-    Vec3  normalize() const              { /* TODO */ }  // hint: *this / length()
+    Vec3  cross(const Vec3& other) const {
+        // second argument is flipped cuz of how cross products work
+        // basically adding the negative form
+        return Vec3((y * other.z - z * other.y), (z * other.x - x * other.z), (x * other.y - y * other.x));
+    }
+
+    float length() const {
+        return std::sqrt(x * x + y * y + z * z);
+    }
+
+    // shrink the arrow to length 1 while keeping direction
+    Vec3  normalize() const {
+        return *this / length();
+    }  
 
     // --- Utility ---
     // Negate the vector (flip direction)
-    Vec3 operator-() const { /* TODO */ }
+    Vec3 operator-() const {
+        return Vec3(x * -1, y * -1, z * -1);
+    }
 };
 
 // Allows writing: 2.0f * v  (scalar on the left)
