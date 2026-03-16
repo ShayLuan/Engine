@@ -10,15 +10,28 @@ struct Vec3 {
     constexpr Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
 
     // --- Arithmetic operators ---
-    // Hint: return a NEW Vec3, don't modify this one
-    Vec3 operator+(const Vec3& other) const { /* TODO */ }
-    Vec3 operator-(const Vec3& other) const { /* TODO */ }
-    Vec3 operator*(float scalar) const      { /* TODO */ }
-    Vec3 operator/(float scalar) const      { /* TODO */ }
+    Vec3 operator+(const Vec3& other) const { 
+        return Vec3(x + other.x, y + other.y, z + other.z);
+     }
+
+    Vec3 operator-(const Vec3& other) const { 
+        return Vec3(x - other.x, y - other.y, z - other.z);
+     }
+
+    Vec3 operator*(float scalar) const      { 
+        return Vec3(x * scalar, y * scalar, z * scalar);
+     }
+    Vec3 operator/(float scalar) const      { 
+        if (scalar == 0.0f){
+            return Vec3(0, 0, 0);
+        }
+        return Vec3(x / scalar, y / scalar, z / scalar);
+     }
 
     // --- Compound assignment operators ---
     // Hint: modify in place, return *this
-    Vec3& operator+=(const Vec3& other) { /* TODO */ }
+    Vec3& operator+=(const Vec3& other) {  
+    }
     Vec3& operator-=(const Vec3& other) { /* TODO */ }
 
     // --- Vector math ---
