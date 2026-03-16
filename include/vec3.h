@@ -1,6 +1,7 @@
 // vec3.h
 #pragma once
 #include <cmath>
+#include <cassert>
 
 struct Vec3 {
     float x, y, z;
@@ -22,9 +23,7 @@ struct Vec3 {
         return Vec3(x * scalar, y * scalar, z * scalar);
      }
     Vec3 operator/(float scalar) const      { 
-        if (scalar == 0.0f){
-            return Vec3(0, 0, 0);
-        }
+        assert(scalar != 0.0f);
         return Vec3(x / scalar, y / scalar, z / scalar);
      }
 
@@ -66,7 +65,7 @@ struct Vec3 {
     // --- Utility ---
     // Negate the vector (flip direction)
     Vec3 operator-() const {
-        return Vec3(x * -1, y * -1, z * -1);
+        return Vec3(-x, -y, -z);
     }
 };
 
