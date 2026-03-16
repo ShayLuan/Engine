@@ -29,10 +29,19 @@ struct Vec3 {
      }
 
     // --- Compound assignment operators ---
-    // Hint: modify in place, return *this
     Vec3& operator+=(const Vec3& other) {  
+        x += other.x;
+        y += other.y;
+        z += other.z;
+        return *this;
     }
-    Vec3& operator-=(const Vec3& other) { /* TODO */ }
+
+    Vec3& operator-=(const Vec3& other) { 
+        x -= other.x;
+        y -= other.y;
+        z -= other.z;
+        return *this;
+    }
 
     // --- Vector math ---
     float dot(const Vec3& other) const   { /* TODO */ }
